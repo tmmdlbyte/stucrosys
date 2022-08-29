@@ -30,15 +30,23 @@ public class StudentService {
         boolean flag = false;
         for (int i = 0; i < stus.length; i++) {
             Student stu = stus[i];
-            if (stu !=null){
+            if (stu != null) {
                 flag = true;
                 break;
             }
         }
-        if(flag){
+        if (flag) {
             return stus;
-        }else {
+        } else {
             return null;
         }
+    }
+
+    public void deleteStudentById(String delId) {
+        studentDao.deleteStudentById(delId);
+    }
+
+    public void changeStudentById(String chId, Student stu) {
+        studentDao.changeStudentById(chId, stu);
     }
 }

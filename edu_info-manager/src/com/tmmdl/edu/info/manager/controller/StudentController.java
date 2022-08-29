@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class StudentController {
     private StudentService studentService = new StudentService();
+    private Scanner sc = new Scanner(System.in);
 
     public void start() {
-        Scanner sc = new Scanner(System.in);
         studentLoop:
         while (true) {
             System.out.println("welcome student sys");
@@ -22,9 +22,11 @@ public class StudentController {
                     break;
                 case "2":
                     System.out.println("student del");
+                    deleteStudentById();
                     break;
                 case "3":
                     System.out.println("stu change");
+                    changStudentById();
                     break;
                 case "4":
                     System.out.println("stu view");
@@ -38,6 +40,23 @@ public class StudentController {
                     break;
             }
         }
+    }
+
+    public void changStudentById() {
+        String chId;
+        String chName;
+        String chAge;
+        String chbir;
+        chId = inputStudentId();
+        Student stu=inputStudentInfo(chId);
+        studentService.changeStudentById(chId, stu);
+        System.out.println("change sucessful");
+    }
+
+
+    public void deleteStudentById() {
+        String DelId = inputStudentId();
+        studentService.deleteStudentById(DelId);
     }
 
     public void findAllstudent() {
@@ -56,8 +75,6 @@ public class StudentController {
     }
 
     public void addStudent() {
-        Scanner sc = new Scanner(System.in);
-
         String id;
         while (true) {
             System.out.println("please enter student id");
@@ -69,6 +86,30 @@ public class StudentController {
                 break;
             }
         }
+        Student stu=inputStudentInfo(id);
+        boolean result = studentService.addStudent(stu);
+        if (result) {
+            System.out.println("add success");
+        } else {
+            System.out.println("add fail");
+        }
+    }
+
+    public String inputStudentId() {
+        String id;
+        while (true) {
+            System.out.println("please enter id");
+            id = sc.next();
+            boolean exist = StudentService.isExists(id);
+            if (exist) {
+                break;
+            } else {
+                System.out.println("this id not exist, please enter once again");
+            }
+        }
+        return id;
+    }
+    public Student inputStudentInfo(String id){
         System.out.println("please enter student name");
         String name = sc.next();
         System.out.println("please enter student age");
@@ -80,11 +121,6 @@ public class StudentController {
         stu.setAge(age);
         stu.setName(name);
         stu.setBirthday(birthday);
-        boolean result = studentService.addStudent(stu);
-        if (result) {
-            System.out.println("add success");
-        } else {
-            System.out.println("add fail");
-        }
+        return stu;
     }
 }
