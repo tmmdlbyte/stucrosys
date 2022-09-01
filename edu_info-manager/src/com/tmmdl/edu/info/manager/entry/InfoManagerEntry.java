@@ -1,6 +1,7 @@
 package com.tmmdl.edu.info.manager.entry;
 
 import com.tmmdl.edu.info.manager.controller.StudentController;
+import com.tmmdl.edu.info.manager.controller.TeacherController;
 
 import java.util.Scanner;
 
@@ -19,6 +20,8 @@ public class InfoManagerEntry {
                     break;
                 case "2":
                     System.out.println("teacher con");
+                    TeacherController teacherController = new TeacherController();
+                    teacherController.start();
                     break;
                 case "3":
                     System.out.println("thanks for your use");

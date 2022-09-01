@@ -1,5 +1,5 @@
 package com.tmmdl.edu.info.manager.domain;
 
-public class Student extends Person{
+public class Teacher extends Person {
 
 }
