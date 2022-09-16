@@ -1,5 +1,7 @@
 package com.tmmdl.edu.info.manager.entry;
 
+import com.tmmdl.edu.info.manager.controller.OtherStudentController;
+import com.tmmdl.edu.info.manager.controller.OtherTeacherController;
 import com.tmmdl.edu.info.manager.controller.StudentController;
 import com.tmmdl.edu.info.manager.controller.TeacherController;
 
@@ -15,12 +17,12 @@ public class InfoManagerEntry {
             switch (choice) {
                 case "1":
                     System.out.println("student con");
-                    StudentController studentController = new StudentController();
+                    OtherStudentController studentController = new OtherStudentController();
                     studentController.start();
                     break;
                 case "2":
                     System.out.println("teacher con");
-                    TeacherController teacherController = new TeacherController();
+                    OtherTeacherController teacherController = new OtherTeacherController();
                     teacherController.start();
                     break;
                 case "3":

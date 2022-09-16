@@ -5,9 +5,10 @@ import com.tmmdl.edu.info.manager.service.TeacherService;
 
 import java.util.Scanner;
 
-public class TeacherController extends BaseTeacherController {
+public class OtherTeacherController extends BaseTeacherController {
     private Scanner sc = new Scanner(System.in);
 
+    @Override
     public Teacher inputTeacherInfo(String id) {
         System.out.println("please enter  name");
         String name = sc.next();
@@ -16,11 +17,7 @@ public class TeacherController extends BaseTeacherController {
         System.out.println("please enter  birthday");
         String birthday = sc.next();
 
-        Teacher teacher = new Teacher();
-        teacher.setId(id);
-        teacher.setAge(age);
-        teacher.setName(name);
-        teacher.setBirthday(birthday);
+        Teacher teacher = new Teacher(id, name, age, birthday);
 
         return teacher;
     }

@@ -4,6 +4,10 @@ import com.tmmdl.edu.info.manager.domain.Student;
 
 public class StudentDao {
     private static Student[] stus = new Student[5];
+    static {
+        Student stu1 = new Student("12","akira","16","7-25");
+        stus[0] = stu1;
+    }
 
     public boolean addStudent(Student stu) {
 
